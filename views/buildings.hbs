@@ -6,6 +6,38 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Buildings</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Building ID</th>
+                <th>Host ID</th>
+                <th>Bedroom Number</th>
+                <th>Bathroom Number</th>
+                <th>Rent Amount</th>
+                <th>Client Number</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Zipcode</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each buildings}}
+                <tr>
+                    <td>{{this.building_id}}</td>
+                    <td>{{this.host_id}}</td>
+                    <td>{{this.bedroom_number}}</td>
+                    <td>{{this.bathroom_number}}</td>
+                    <td>{{this.rent_amount}}</td>
+                    <td>{{this.client_number}}</td>
+                    <td>{{this.state}}</td>
+                    <td>{{this.city}}</td>
+                    <td>{{this.address}}</td>
+                    <td>{{this.zipcode}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </body>
 </html>

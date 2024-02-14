@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental History</title>
+</head>
+<body>
+    <h1>Rental History</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Rental ID</th>
+                <th>Client ID</th>
+                <th>Building ID</th>
+                <th>Lease Start Date</th>
+                <th>Lease End Date</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each rental_histories}}
+                <tr>
+                    <td>{{this.rental_id}}</td>
+                    <td>{{this.client_id}}</td>
+                    <td>{{this.building_id}}</td>
+                    <td>{{this.lease_start_date}}</td>
+                    <td>{{this.lease_end_date}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    
+</body>
+</html>

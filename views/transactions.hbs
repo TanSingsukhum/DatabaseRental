@@ -3,9 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Transactions</title>
 </head>
 <body>
-    
+    <h1>Transactions</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Rental ID</th>
+                <th>Payment Method</th>
+                <th>Payment Amount</th>
+                <th>Date Paid</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each transactions}}
+                <tr>
+                    <td>{{this.transaction_id}}</td>
+                    <td>{{this.rental_id}}</td>
+                    <td>{{this.payment_method}}</td>
+                    <td>{{this.payment_amount}}</td>
+                    <td>{{this.date_paid}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </body>
 </html>
