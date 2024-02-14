@@ -4,11 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transactions</title>
+    <style>
+        /* Add any additional styles here */
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Style for the Enter button */
+        button.enter-button {
+            background-color: green;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>Transactions</h1>
     <a href='/'><button>Home</button></a>
-
 
     <table>
         <thead>
@@ -18,7 +44,8 @@
                 <th>Payment Method</th>
                 <th>Payment Amount</th>
                 <th>Date Paid</th>
-
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -29,9 +56,27 @@
                     <td>{{this.payment_method}}</td>
                     <td>{{this.payment_amount}}</td>
                     <td>{{this.date_paid}}</td>
+                    <td><button class="Edit-button" onclick="submitHostData('edit')">Edit</button></td>
+                    <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
                 </tr>
             {{/each}}
+            <!-- Add a single row for all input boxes and the Enter button -->
+            <tr>
+                <td>{{this.transactin_id}}</td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><button class="enter-button" onclick="submitHostData('new')">Enter</button></td>
+            </tr>
         </tbody>
     </table>
+
+    <script>
+        function submitHostData(hostId) {
+            // Handle the submission logic for Hosts here
+            console.log('Submitting data for Host ID:', hostId);
+        }
+    </script>
 </body>
 </html>

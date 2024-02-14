@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients</title>
+    <style>
+        /* Add any additional styles here */
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Style for the Enter button */
+        button.enter-button {
+            background-color: green;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>Clients</h1>
@@ -21,6 +48,8 @@
                 <th>City</th>
                 <th>Address</th>
                 <th>Zipcode</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -30,13 +59,36 @@
                     <td>{{this.building_id}}</td>
                     <td>{{this.phone_number}}</td>
                     <td>{{this.client_name}}</td>
+                    <td>{{this.client_email}}</td>
                     <td>{{this.state}}</td>
                     <td>{{this.city}}</td>
                     <td>{{this.address}}</td>
                     <td>{{this.zipcode}}</td>
+                    <td><button class="Edit-button" onclick="submitHostData('edit')">Edit</button></td>
+                    <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
                 </tr>
             {{/each}}
+            <!-- Add a single row for all input boxes and the Enter button -->
+            <tr>
+                <td></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><input type="text" placeholder="Enter"></td>
+                <td><button class="enter-button" onclick="submitHostData('new')">Enter</button></td>
+            </tr>
         </tbody>
     </table>
+
+    <script>
+        function submitHostData(clientId) {
+            // Handle the submission logic for Clients here
+            console.log('Submitting data for Client ID:', clientId);
+        }
+    </script>
 </body>
 </html>

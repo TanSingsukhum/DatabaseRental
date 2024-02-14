@@ -4,6 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hosts</title>
+    <style>
+        /* Add any additional styles here */
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Style for the Enter button */
+        button.enter-button {
+            background-color: green;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>Hosts</h1>
@@ -17,6 +44,8 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Number of Buildings Owned</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -27,9 +56,27 @@
                     <td>{{this.host_email}}</td>
                     <td>{{this.host_phone_number}}</td>
                     <td>{{this.number_buildings_owned}}</td>
+                    <td><button class="Edit-button" onclick="submitHostData('edit')">Edit</button></td>
+                    <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
                 </tr>
             {{/each}}
+            <!-- Add a single row for all input boxes and the Enter button -->
+            <tr>
+                <td>{{this.host_id}}</td>
+                <td><input type="text" placeholder="Enter host name"></td>
+                <td><input type="text" placeholder="Enter email"></td>
+                <td><input type="text" placeholder="Enter phone number"></td>
+                <td><input type="text" placeholder="Enter number of buildings owned"></td>
+                <td><button class="enter-button" onclick="submitHostData('new')">Enter</button></td>
+            </tr>
         </tbody>
     </table>
+
+    <script>
+        function submitHostData(action) {
+            // Handle the submission logic for Hosts here based on action (edit, delete, new)
+            console.log('Submitting data for action:', action);
+        }
+    </script>
 </body>
 </html>
