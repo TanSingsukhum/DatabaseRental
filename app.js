@@ -1,6 +1,6 @@
 var express = require('express');   // We are using the express library for the web server
 var app = express();            // We need to instantiate an express object to interact with the server in our code
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 2150;
 var db = require('./db-connector')
 var exphbs = require('express-handlebars');
 
