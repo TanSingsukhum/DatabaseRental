@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clients</title>
+</head>
+<body>
+     <h1>Hosts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Building ID</th>
+                <th>Phone Number</th>
+                <th>Client Name</th>
+                <th>Client Email</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Zipcode</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each clients}}
+                <tr>
+                    <td>{{this.client_id}}</td>
+                    <td>{{this.building_id}}</td>
+                    <td>{{this.phone_number}}</td>
+                    <td>{{this.client_name}}</td>
+                    <td>{{this.client_email}}</td>
+                    <td>{{this.state}}</td>
+                    <td>{{this.city}}</td>
+                    <td>{{this.address}}</td>
+                    <td>{{this.zipcode}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>

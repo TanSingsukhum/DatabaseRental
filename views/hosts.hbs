@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosts</title>
+</head>
+<body>
+    <h1>Hosts</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Host ID</th>
+                <th>Host Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Number of Buildings Owned</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each hosts}}
+                <tr>
+                    <td>{{this.host_id}}</td>
+                    <td>{{this.host_name}}</td>
+                    <td>{{this.host_email}}</td>
+                    <td>{{this.host_phone_number}}</td>
+                    <td>{{this.number_buildings_owned}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
