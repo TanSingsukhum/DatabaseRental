@@ -12,6 +12,9 @@ app.locals.layout = false;
     ROUTES
 */
 
+app.get('/', function(req, res) {
+    res.render('index'); 
+});
 
 app.get('/buildings', function(req,res){
     let query = "SELECT * FROM Buildings";

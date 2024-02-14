@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+</head>
+<body>
+    <h1>Reviews</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Review ID</th>
+                <th>Client ID</th>
+                <th>Building ID</th>
+                <th>Rating</th>
+                <th>Comments</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each reviews}}
+                <tr>
+                    <td>{{this.review_id}}</td>
+                    <td>{{this.client_id}}</td>
+                    <td>{{this.building_id}}</td>
+                    <td>{{this.rating}}</td>
+                    <td>{{this.comments}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
