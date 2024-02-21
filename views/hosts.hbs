@@ -37,6 +37,12 @@
     <a href='/'><button>Home</button></a>
 
     <table>
+
+        <form action="/search" method="get">
+            <input type="text" id="searchInput" name="searchInput" placeholder="Search by Host ID">
+            <input type="submit" value="Search">
+        </form>
+
         <thead>
             <tr>
                 <th>Host ID</th>
@@ -73,10 +79,7 @@
     </table>
 
     <script>
-        function submitHostData(action) {
-            // Handle the submission logic for Hosts here based on action (edit, delete, new)
-            console.log('Submitting data for action:', action);
-        }
+  
     </script>
 </body>
 </html>

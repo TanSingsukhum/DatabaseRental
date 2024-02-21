@@ -36,6 +36,11 @@
     <h1>Rental History</h1>
     <a href='/'><button>Home</button></a>
 
+    <form action="/search" method="get">
+        <input type="text" id="searchInput" name="searchInput" placeholder="Search by Rental ID">
+        <input type="submit" value="Search">
+    </form>
+
     <table>
         <thead>
             <tr>
@@ -44,7 +49,7 @@
                 <th>Building ID</th>
                 <th>Lease Start Date</th>
                 <th>Lease End Date</th>
-                 <th>Update</th>
+                <th>Update</th>
                 <th>Delete</th>
             </tr>
         </thead>

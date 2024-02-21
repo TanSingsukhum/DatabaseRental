@@ -37,7 +37,7 @@ CREATE OR REPLACE TABLE Buildings (
     address VARCHAR(255) NOT NULL,
     zipcode INT(5) NOT NULL,
     PRIMARY KEY (building_id),
-    FOREIGN KEY (host_id) REFERENCES Hosts(host_id)
+    FOREIGN KEY (host_id) REFERENCES Hosts(host_id) ON DELETE CASCADE
 );
 INSERT INTO Buildings(host_id, bedroom_number, bathroom_number, rent_amount, client_number, state, city, address, zipcode)
 VALUES
@@ -58,7 +58,7 @@ CREATE OR REPLACE TABLE Clients (
     city VARCHAR(255) NOT NULL,
     address VARCHAR(255) NOT NULL,
     zipcode INT(5) NOT NULL,
-    FOREIGN KEY (building_id) REFERENCES Buildings(building_id),
+    FOREIGN KEY (building_id) REFERENCES Buildings(building_id) ON DELETE CASCADE,
     PRIMARY KEY (client_id)
 );
 INSERT INTO Clients( building_id, phone_number, client_name, client_email, state, city, address, zipcode)
@@ -76,8 +76,8 @@ CREATE OR REPLACE TABLE Rental_Histories (
     lease_start_date DATE NOT NULL,
     lease_end_date DATE,
     PRIMARY KEY (rental_id),
-    FOREIGN KEY (client_id) REFERENCES Clients(client_id),
-    FOREIGN KEY (building_id) REFERENCES Buildings(building_id)
+    FOREIGN KEY (client_id) REFERENCES Clients(client_id) ON DELETE CASCADE,
+    FOREIGN KEY (building_id) REFERENCES Buildings(building_id) ON DELETE CASCADE
 );
 INSERT INTO Rental_Histories(client_id, building_id, lease_start_date, lease_end_date)
 VALUES
@@ -95,7 +95,7 @@ CREATE OR REPLACE TABLE Transactions (
     payment_amount DECIMAL(10,2),
     date_paid DATE,
     PRIMARY KEY (transaction_id),
-    FOREIGN KEY (rental_id) REFERENCES Rental_Histories(rental_id)
+    FOREIGN KEY (rental_id) REFERENCES Rental_Histories(rental_id) ON DELETE CASCADE
 );
 INSERT INTO Transactions( rental_id, payment_method, payment_amount, date_paid)
 VALUES
@@ -113,8 +113,8 @@ CREATE OR REPLACE TABLE Reviews (
     rating INT NOT NULL,
     comments VARCHAR(255),
     PRIMARY KEY (review_id),
-    FOREIGN KEY (client_id) REFERENCES Clients(client_id),
-    FOREIGN KEY (building_id) REFERENCES Buildings(building_id)
+    FOREIGN KEY (client_id) REFERENCES Clients(client_id) ON DELETE CASCADE,
+    FOREIGN KEY (building_id) REFERENCES Buildings(building_id) ON DELETE CASCADE
 );
 INSERT INTO Reviews( client_id, building_id, rating, comments)
 VALUES 
