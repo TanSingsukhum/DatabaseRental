@@ -29,6 +29,46 @@ app.get('/buildings', function(req,res){
     });
 })
 
+app.post('/add-building-form', function(req, res) {
+    let data = req.body;
+
+    console.log('Request body:', req.body); // Log the request body to see if data is being received
+    console.log('Received data:', data); // Log received data
+
+    let hostID = parseInt(data.hostID);
+    let bedroomNumber = parseInt(data.bedroomNumber);
+    let bathroomNumber = parseInt(data.bathroomNumber);
+    let rentAmount = parseFloat(data.rentAmount);
+    let clientNumber = parseInt(data.clientNumber);
+    let zipcode = parseInt(data.zipcode);
+
+    let query = `INSERT INTO Buildings (host_id, bedroom_number, bathroom_number, rent_amount, client_number, state, city, address, zipcode)
+    VALUES ('${hostID}', '${bedroomNumber}', '${bathroomNumber}', '${rentAmount}', '${clientNumber}', '${data.state}', '${data.city}', '${data.address}', '${zipcode}')`;
+    
+    // Execute the query
+    db.pool.query(query, function(error, result) {
+        if (error) {
+            console.error('Error inserting building:', error);
+            res.status(500).send('Error inserting building');
+            return;
+        }
+        
+       // Query the database to get the inserted client data
+       let selectQuery = 'SELECT * FROM Clients WHERE client_id = LAST_INSERT_ID()';
+       db.pool.query(selectQuery, function(selectError, selectResult) {
+           if (selectError) {
+               console.error("Error retrieving inserted client:", selectError);
+               res.status(500).send("Error retrieving inserted client");
+               return;
+           }
+           // Send the inserted client data as response
+           res.status(200).json(selectResult);
+       });
+       
+    });
+});
+
+
 //Get table from hosts
 app.get('/hosts', function(req, res) {
     let query = "SELECT * FROM Hosts";
@@ -56,7 +96,7 @@ app.get('/clients', function(req,res){
 
 app.post('/add-client-form', function(req, res) {
     let data = req.body;
-        console.log('Request body:', req.body); // Log the request body to see if data is being received
+    console.log('Request body:', req.body); // Log the request body to see if data is being received
 
     console.log('Received data:', data); // Log received data
 

@@ -41,7 +41,7 @@
         <input type="submit" value="Search">
     </form>
 
-    <table>
+    <table id="buildings-table">
         <thead>
             <tr>
                 <th>Building ID</th>
@@ -75,28 +75,40 @@
                     <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
                 </tr>
             {{/each}}
-            <!-- Add a single row for all input boxes and the Enter button -->
-            <tr>
-                <td>{{this.building_id}}</td>
-                <td><input type="text" placeholder="Enter host ID"></td>
-                <td><input type="text" placeholder="Enter bedroom number"></td>
-                <td><input type="text" placeholder="Enter bathroom number"></td>
-                <td><input type="text" placeholder="Enter rent amount"></td>
-                <td><input type="text" placeholder="Enter client number"></td>
-                <td><input type="text" placeholder="Enter state"></td>
-                <td><input type="text" placeholder="Enter city"></td>
-                <td><input type="text" placeholder="Enter address"></td>
-                <td><input type="text" placeholder="Enter zipcode"></td>
-                <td><button class="enter-button" onclick="submitData('new')">Enter</button></td>
-            </tr>
         </tbody>
     </table>
 
-    <script>
-        function submitData(buildingId) {
-            // Handle the submission logic here
-            console.log('Submitting data for Building ID:', buildingId);
-        }
-    </script>
+    <form id="add-building-form">
+        <label for="input-hostID">Host ID: </label>
+        <input type="number" name="input-hostID" id="input-hostID">
+
+        <label for="input-bedroom">Number of Bedrooms:</label>
+        <input type="number" name="input-bedroom" id="input-bedroom">
+
+        <label for="input-bathroom">Number of Bathrooms:</label>
+        <input type="number" name="input-bathroom" id="input-bathroom">
+
+        <label for="input-rent">Rent Amount:</label>
+        <input type="number" step="any" name="input-rent" id="input-rent">
+
+        <label for="input-client">Number of Clients:</label>
+        <input type="number" name="input-client" id="input-client">
+
+        <label for="input-state">State: </label>
+        <input type="text" name="input-state" id="input-state">
+
+        <label for="input-city">City: </label>
+        <input type="text" name="input-city" id="input-city">
+
+        <label for="input-address">Address: </label>
+        <input type="text" name="input-address" id="input-address">
+
+        <label for="input-zipcode">Zipcode: </label>
+        <input type="number" name="input-zipcode" id="input-zipcode">
+
+        <input type="submit">
+    </form>
+
+    <script src="/js/add_building.js"> </script>
 </body>
 </html>

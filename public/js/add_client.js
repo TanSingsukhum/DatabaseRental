@@ -51,7 +51,6 @@ addClientForm.addEventListener("submit", function (e) {
     // Send data with the request
     xhttp.send(JSON.stringify(data));
 });
-
 addRowToTable = (data) => {
     let currentTable = document.getElementById("client-table");
 
@@ -62,23 +61,23 @@ addRowToTable = (data) => {
     let row = document.createElement("TR");
     
     let clientIDCell = document.createElement("TD");
-    clientIDCell.textContent = newRow.client_id;
+    clientIDCell.textContent = newRow.clientID; 
     row.appendChild(clientIDCell);
 
     let buildingIDCell = document.createElement("TD");
-    buildingIDCell.textContent = newRow.building_id;
+    buildingIDCell.textContent = newRow.buildingID; 
     row.appendChild(buildingIDCell);
 
     let phoneNumberCell = document.createElement("TD");
-    phoneNumberCell.textContent = newRow.phone_number;
+    phoneNumberCell.textContent = newRow.phoneNumber;
     row.appendChild(phoneNumberCell);
 
     let nameCell = document.createElement("TD");
-    nameCell.textContent = newRow.client_name;
+    nameCell.textContent = newRow.clientName; 
     row.appendChild(nameCell);
 
     let emailCell = document.createElement("TD");
-    emailCell.textContent = newRow.client_email;
+    emailCell.textContent = newRow.clientEmail; 
     row.appendChild(emailCell);
 
     let stateCell = document.createElement("TD");
@@ -86,15 +85,15 @@ addRowToTable = (data) => {
     row.appendChild(stateCell);
 
     let cityCell = document.createElement("TD");
-    cityCell.textContent = newRow.city;
+    cityCell.textContent = newRow.city; 
     row.appendChild(cityCell);
 
     let addressCell = document.createElement("TD");
-    addressCell.textContent = newRow.address;
+    addressCell.textContent = newRow.address; 
     row.appendChild(addressCell);
 
     let zipcodeCell = document.createElement("TD");
-    zipcodeCell.textContent = newRow.zipcode;
+    zipcodeCell.textContent = newRow.zipcode; 
     row.appendChild(zipcodeCell);
 
     // Append the row to the table
