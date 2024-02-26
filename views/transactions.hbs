@@ -36,6 +36,14 @@
     <h1>Transactions</h1>
     <a href='/'><button>Home</button></a>
 
+        <form id="search-transaction" method="GET" action="/transactions"> 
+            <label for="search-transaction" >Search by rental ID: </label>
+            <input type="text" name="rental_id" id="search-transaction" placeholder="enter a rental ID">
+
+            <input type="submit">
+            <a href="/transactions"><button>Reset</button></a>
+        </form>    
+
     <table id="transactions-table">
         <thead>
             <tr>

@@ -36,10 +36,14 @@
     <h1>Rental History</h1>
     <a href='/'><button>Home</button></a>
 
-    <form action="/search" method="get">
-        <input type="text" id="searchInput" name="searchInput" placeholder="Search by Rental ID">
-        <input type="submit" value="Search">
-    </form>
+        <form id="search-rental" method="GET" action="/rental_histories"> 
+            <label for="input-hostsName" >Search by Host Name: </label>
+            <input type="text" name="rental_id" id="input-rental" placeholder="enter a rental ID">
+
+            <input type="submit">
+            <a href="/rental_histories"><button>Reset</button></a>
+        </form>
+
 
     <table id="rentalHistory-table">
         <thead>

@@ -188,7 +188,14 @@ app.post('/add-client-form', function(req, res) {
 
 
 app.get('/transactions', function(req,res){
-    let query = "SELECT * FROM Transactions";
+    let query;
+
+    if(req.query.rental_id === undefined){
+        query = "SELECT * FROM Transactions";
+    }else{
+        query = `SELECT * FROM Transactions WHERE rental_id LIKE "${req.query.rental_id}%"`
+    }
+
     db.pool.query(query, function(err, results) {
         if (err) {
             console.error("Error retrieving transactions:", err);
@@ -241,7 +248,13 @@ app.post('/add-transaction-form', function(req,res){
 })
 
 app.get('/rental_histories', function(req, res){
-    let query = "SELECT * FROM Rental_Histories"
+    let query;
+
+    if(req.query.rental_id === undefined){
+        query = "SELECT * FROM Rental_Histories";
+    }else{
+        query = `SELECT * FROM Rental_Histories WHERE rental_id LIKE "${req.query.rental_id}%"`
+    }
     db.pool.query(query, function(err, results) {
         if (err) {
             console.error("Error retrieving rental history:", err);
@@ -287,7 +300,13 @@ app.post('/add-rentalHistory-form', function(req, res) {
 
 
 app.get('/reviews', function(req, res){
-    let query = "SELECT * FROM Reviews"
+    let query;
+
+    if(req.query.rating === undefined){
+        query = "SELECT * FROM Reviews";
+    }else{
+        query = `SELECT * FROM Reviews WHERE rating LIKE "${req.query.rating}%"`
+    }
     db.pool.query(query, function(err, results) {
         if (err) {
             console.error("Error retrieving reviews:", err);

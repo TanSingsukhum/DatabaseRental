@@ -36,10 +36,13 @@
     <h1>Reviews</h1>
     <a href='/'><button>Home</button></a>
 
-    <form action="/search" method="get">
-        <input type="text" id="searchInput" name="searchInput" placeholder="Search by Review ID">
-        <input type="submit" value="Search">
-    </form>
+        <form id="search-rating" method="GET" action="/reviews"> 
+            <label for="search-rating" >Search a Review by Rating: </label>
+            <input type="text" name="rating" id="search-rating" placeholder="enter a rating (0-5)">
+
+            <input type="submit">
+            <a href="/reviews"><button>Reset</button></a>
+        </form>
 
     <table id="reviews-table">
         <thead>
