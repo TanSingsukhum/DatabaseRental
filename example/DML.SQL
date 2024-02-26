@@ -97,3 +97,7 @@ DELETE FROM Transactions
 WHERE transaction_id = :transactonID;
 
 
+-- READ/SELECT query to select clients with their associated buildings
+SELECT Clients.*, Buildings.*
+FROM Clients
+INNER JOIN Buildings ON Clients.building_id = Buildings.building_id;

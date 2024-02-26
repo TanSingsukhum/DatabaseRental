@@ -36,7 +36,7 @@
     <h1>Hosts</h1>
     <a href='/'><button>Home</button></a>
 
-    <table>
+    <table id="hosts-table">
 
         <form action="/search" method="get">
             <input type="text" id="searchInput" name="searchInput" placeholder="Search by Host ID">
@@ -62,7 +62,7 @@
                     <td>{{this.host_email}}</td>
                     <td>{{this.host_phone_number}}</td>
                     <td>{{this.number_buildings_owned}}</td>
-                    <td><button class="Edit-button" onclick="submitHostData('edit')">Edit</button></td>
+                    <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
                     <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
                 </tr>
             {{/each}}

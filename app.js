@@ -3,14 +3,15 @@ var app = express();            // We need to instantiate an express object to i
 var PORT = process.env.PORT || 2150;
 var db = require('./db-connector')
 var exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
 app.engine('.hbs', exphbs.engine({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
 
 app.locals.layout = false;
-/*
-    ROUTES
-*/
 
 app.get('/', function(req, res) {
     res.render('index'); 
@@ -41,21 +42,6 @@ app.get('/hosts', function(req, res) {
     });
 });
 
-//CRUD OPERATIONS
-
-app.post('/hosts', function(req, res){
-    //Create new post
-});
-
-app.put('/hosts/:id', function(req, res){
-    //Update an existing host
-})
-
-app.delete('/hosts/:id', function(req, res){
-    //Delete host
-})
-
-
 app.get('/clients', function(req,res){
     let query = "SELECT * FROM Clients";
     db.pool.query(query, function(err, results) {
@@ -67,6 +53,41 @@ app.get('/clients', function(req,res){
         res.render('clients', { clients: results });
     });
 })
+
+app.post('/add-client-form', function(req, res) {
+    let data = req.body;
+        console.log('Request body:', req.body); // Log the request body to see if data is being received
+
+    console.log('Received data:', data); // Log received data
+
+    let phoneNumber = parseInt(data.phoneNumber);
+    let zipcode = parseInt(data.zipcode);
+
+    let query = `INSERT INTO Clients (building_id, phone_number, client_name, client_email, state, city, address, zipcode)
+    VALUES ('${data.buildingID}', '${phoneNumber}', '${data.clientName}', '${data.clientEmail}', '${data.state}', '${data.city}', '${data.address}', '${zipcode}')`;
+    
+    db.pool.query(query, function(error, result) {
+        if (error) {
+            console.error("Error inserting client:", error);
+            res.status(500).send("Error inserting client");
+            return;
+        }
+        
+        // Query the database to get the inserted client data
+        let selectQuery = 'SELECT * FROM Clients WHERE client_id = LAST_INSERT_ID()';
+        db.pool.query(selectQuery, function(selectError, selectResult) {
+            if (selectError) {
+                console.error("Error retrieving inserted client:", selectError);
+                res.status(500).send("Error retrieving inserted client");
+                return;
+            }
+            // Send the inserted client data as response
+            res.status(200).json(selectResult);
+        });
+    });
+});
+
+
 
 app.get('/transactions', function(req,res){
     let query = "SELECT * FROM Transactions";

@@ -36,7 +36,7 @@
     <h1>Clients</h1>
     <a href='/'><button>Home</button></a>
 
-    <table>
+    <table id="client-table">
 
         <form action="/search" method="get">
             <input type="text" id="searchInput" name="searchInput" placeholder="Search by Client ID">
@@ -70,31 +70,47 @@
                     <td>{{this.city}}</td>
                     <td>{{this.address}}</td>
                     <td>{{this.zipcode}}</td>
-                    <td><button class="Edit-button" onclick="submitHostData('edit')">Edit</button></td>
+                    <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
                     <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
                 </tr>
             {{/each}}
             <!-- Add a single row for all input boxes and the Enter button -->
-            <tr>
-                <td></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><button class="enter-button" onclick="submitHostData('new')">Enter</button></td>
-            </tr>
+
         </tbody>
     </table>
 
-    <script>
-        function submitHostData(clientId) {
-            // Handle the submission logic for Clients here
-            console.log('Submitting data for Client ID:', clientId);
-        }
-    </script>
+
+    <form id="add-client-form">
+        <label for="input-buildingID">Building ID: </label>
+        <input type="text" name="input-buildingID" id="input-buildingID">
+
+        <label for="input-phoneNumber">Phone Number: </label>
+        <input type="text" name="input-phoneNumber" id="input-phoneNumber">
+
+        <label for="input-name">Full Name: </label>
+        <input type="text" name="input-name" id="input-name">
+
+        <label for="input-email">Email: </label>
+        <input type="text" name="input-email" id="input-email">
+
+        <label for="input-state">State: </label>
+        <input type="text" name="input-state" id="input-state">
+
+        <label for="input-city">City: </label>
+        <input type="text" name="input-city" id="input-city">
+
+        <label for="input-address">Address: </label>
+        <input type="text" name="input-address" id="input-address">
+
+
+        <label for="input-zipcode">Zipcode: </label>
+        <input type="number" name="input-zipcode" id="input-zipcode">
+
+    
+        <input type="submit">
+    </form>
+
+
+    <script src="/js/add_client.js"></script>
 </body>
 </html>
