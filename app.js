@@ -190,6 +190,39 @@ app.get('/rental_histories', function(req, res){
         res.render('rental_histories', { rental_histories: results });
     });
 })
+app.post('/add-rentalHistory-form', function(req, res) {
+    let data = req.body;
+    console.log('Request body:', req.body); // Log the request body to see if data is being received
+    console.log('Received data:', data); // Log received data
+
+    let clientID = parseInt(data.clientID);
+    let buildingID = parseInt(data.buildingID);
+    let leaseStart = new Date(data.leaseStartDate).toISOString().slice(0, 19).replace('T', ' ');
+    let leaseEnd = new Date(data.leaseEndDate).toISOString().slice(0, 19).replace('T', ' ');
+
+    let query = `INSERT INTO Rental_Histories (client_id, building_id, lease_start_date, lease_end_date)
+    VALUES (${clientID}, ${buildingID}, '${leaseStart}', '${leaseEnd}')`;
+    
+    db.pool.query(query, function(error, result) {
+        if (error) {
+            console.error("Error inserting rental history:", error);
+            res.status(500).send("Error inserting rental history");
+            return;
+        }
+        
+        // Query the database to get the inserted client data
+        let selectQuery = 'SELECT * FROM Rental_Histories WHERE rental_ID = LAST_INSERT_ID()';
+        db.pool.query(selectQuery, function(selectError, selectResult) {
+            if (selectError) {
+                console.error("Error retrieving inserted rental history:", selectError);
+                res.status(500).send("Error retrieving inserted rental history");
+                return;
+            }
+            // Send the inserted client data as response
+            res.status(200).json(selectResult);
+        });
+    });
+});
 
 
 app.get('/reviews', function(req, res){

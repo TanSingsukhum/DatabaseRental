@@ -41,7 +41,7 @@
         <input type="submit" value="Search">
     </form>
 
-    <table>
+    <table id="rentalHistory-table">
         <thead>
             <tr>
                 <th>Rental ID</th>
@@ -66,22 +66,25 @@
                 </tr>
             {{/each}}
             <!-- Add a single row for all input boxes and the Enter button -->
-            <tr>
-                <td>{{this.retal_history_id}}</td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><button class="enter-button" onclick="submitHostData('new')">Enter</button></td>
-            </tr>
         </tbody>
     </table>
 
-    <script>
-        function submitHostData(hostId) {
-            // Handle the submission logic for Hosts here
-            console.log('Submitting data for Host ID:', hostId);
-        }
-    </script>
+    <form id="add-rentalHistory-form">
+        <label for="input-clientID">Enter Client ID: </label>
+        <input type="text" name="input-clientID" id="input-clientID">
+
+        <label for="input-buildingID">Enter Building ID: </label>
+        <input type="text" name="input-buildingID" id="input-buildingID">
+
+        <label for="input-leaseStart">Enter Lease Start Date: </label>
+        <input type="date" name="input-leaseStart" id="input-leaseStart">
+
+        <label for="input-leaseEnd">Enter Lease End Date: </label>
+        <input type="date" name="input-leaseEnd" id="input-leaseEnd">
+
+        <input type="submit">
+    </form>
+
+    <script src="/js/add_rentalHistory.js"></script>
 </body>
 </html>
