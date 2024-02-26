@@ -1,12 +1,12 @@
-let addHostForm = document.getElementById('add-host-form');
+let addHostForm = document.getElementById('add-hosts-form');
 
 addHostForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    let inputName = document.getElementById("input-name").value;
+    let inputName = document.getElementById("input-hostName").value;
     let inputEmail = document.getElementById("input-email").value;
     let inputPhoneNumber = document.getElementById("input-phoneNumber").value;
-    let inputNumberBuildings = document.getElementById("input-numberBuildings").value;
+    let inputNumberBuildings = document.getElementById("input-buildingsOwned").value;
 
     let data = {
         hostName: inputName,
@@ -17,7 +17,7 @@ addHostForm.addEventListener("submit", function (e) {
 
     // AJAX request
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/add-host-form", true);
+    xhttp.open("POST", "/add-hosts-form", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     // Resolve AJAX
@@ -26,10 +26,10 @@ addHostForm.addEventListener("submit", function (e) {
             addRowToTable(xhttp.response);
 
             // Clear input fields
-            document.getElementById("input-name").value = '';
+            document.getElementById("input-hostName").value = '';
             document.getElementById("input-email").value = '';
             document.getElementById("input-phoneNumber").value = '';
-            document.getElementById("input-numberBuildings").value = '';
+            document.getElementById("input-buildingsOwned").value = '';
         }
     };
 

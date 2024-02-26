@@ -64,7 +64,7 @@ app.post('/add-building-form', function(req, res) {
            // Send the inserted client data as response
            res.status(200).json(selectResult);
        });
-       
+
     });
 });
 
@@ -82,6 +82,45 @@ app.get('/hosts', function(req, res) {
     });
 });
 
+app.post('/add-hosts-form', function(req, res){
+    let data = req.body;
+    console.log('Request body:', req.body); // Log the request body to see if data is being received
+    console.log('Received data:', data); // Log received data
+    /*
+        hostName: inputName,
+        hostEmail: inputEmail,
+        hostPhoneNumber: inputPhoneNumber,
+        numberBuildingsOwned: inputNumberBuildings
+    */
+    let phoneNumber = parseInt(data.hostPhoneNumber);
+    let buildingsNumber = parseInt(data.numberBuildingsOwned);
+
+    let query = `INSERT INTO Hosts( host_name, host_email, host_phone_number, number_buildings_owned) 
+    VALUES('${data.hostName}', '${data.hostEmail}', '${phoneNumber}', '${buildingsNumber}');`
+
+    db.pool.query(query, function(error, result) {
+        if (error) {
+            console.error('Error inserting host:', error);
+            res.status(500).send('Error inserting host');
+            return;
+        }
+        
+       // Query the database to get the inserted client data
+       let selectQuery = 'SELECT * FROM Hosts WHERE host_id = LAST_INSERT_ID()';
+       db.pool.query(selectQuery, function(selectError, selectResult) {
+           if (selectError) {
+               console.error("Error retrieving inserted host:", selectError);
+               res.status(500).send("Error retrieving inserted host");
+               return;
+           }
+           // Send the inserted client data as response
+           res.status(200).json(selectResult);
+       });
+       
+    });
+    
+});
+
 app.get('/clients', function(req,res){
     let query = "SELECT * FROM Clients";
     db.pool.query(query, function(err, results) {
@@ -97,7 +136,6 @@ app.get('/clients', function(req,res){
 app.post('/add-client-form', function(req, res) {
     let data = req.body;
     console.log('Request body:', req.body); // Log the request body to see if data is being received
-
     console.log('Received data:', data); // Log received data
 
     let phoneNumber = parseInt(data.phoneNumber);
