@@ -36,7 +36,7 @@
     <h1>Transactions</h1>
     <a href='/'><button>Home</button></a>
 
-    <table>
+    <table id="transactions-table">
         <thead>
             <tr>
                 <th>Transaction ID</th>
@@ -60,23 +60,29 @@
                     <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
                 </tr>
             {{/each}}
-            <!-- Add a single row for all input boxes and the Enter button -->
-            <tr>
-                <td>{{this.transaction_id}}</td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><input type="text" placeholder="Enter"></td>
-                <td><button class="enter-button" onclick="submitHostData('new')">Enter</button></td>
-            </tr>
+ 
         </tbody>
     </table>
 
-    <script>
-        function submitHostData(hostId) {
-            // Handle the submission logic for Hosts here
-            console.log('Submitting data for Host ID:', hostId);
-        }
-    </script>
+
+
+    <form id="add-transaction-form">
+        <label for="input-rentalID">Enter a Rental ID: </label>
+        <input type="number" name="input-rentalID" id="input-rentalID">
+
+        <label for="input-paymentMethod">Enter Payment Method: </label>
+        <input type="text" name="input-paymentMethod" id="input-paymentMethod">
+
+        <label for="input-paymentAmount">Enter Payment Amount: </label>
+        <input type="number" step="any" name="input-paymentAmount" id="input-paymentAmount">
+
+        
+        <label for="input-datePaid">Enter Date Paid: </label>
+        <input type="date" name="input-datePaid" id="input-datePaid">
+
+        <input type="submit">
+    </form>
+
+    <script src="/js/add_transaction.js"></script>
 </body>
 </html>

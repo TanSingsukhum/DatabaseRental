@@ -42,6 +42,7 @@ addClientForm.addEventListener("submit", function (e) {
             document.getElementById("input-city").value = '';
             document.getElementById("input-address").value = '';
             document.getElementById("input-zipcode").value = '';
+            alert("Data successfully added!");
         }else if (xhttp.status == 500) {
             // Display an alert for invalid building ID
             alert("Building ID does not exist!");

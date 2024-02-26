@@ -46,6 +46,7 @@ addClientBuilding.addEventListener("submit", function(e){
             document.getElementById("input-city").value = '';
             document.getElementById("input-address").value = '';
             document.getElementById("input-zipcode").value = '';
+            alert("Data successfully added!");
         }else if (xhttp.status == 500){
             alert("Host ID does not exist!");
         };

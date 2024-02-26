@@ -30,6 +30,7 @@ addHostForm.addEventListener("submit", function (e) {
             document.getElementById("input-email").value = '';
             document.getElementById("input-phoneNumber").value = '';
             document.getElementById("input-buildingsOwned").value = '';
+            alert("Data successfully added!");
         }
     };
 

@@ -178,6 +178,47 @@ app.get('/transactions', function(req,res){
         res.render('transactions', { transactions: results });
     });
 })
+app.post('/add-transaction-form', function(req,res){
+
+    /*
+            rentalID: inputRentalID,
+        paymentMethod: inputPaymentMethod,
+        paymentAmount: inputPaymentAmount,
+        datePaid: inputDatePaid
+            let leaseStart = new Date(data.leaseStartDate).toISOString().slice(0, 19).replace('T', ' ');
+
+    */
+    let data = req.body;
+    console.log('Request body:', req.body); // Log the request body to see if data is being received
+    console.log('Received data:', data); // Log received data
+
+    let rentalID = parseInt(data.rentalID);
+    let paymentAmount = parseFloat(data.paymentAmount);
+    let datePaid = new Date(data.datePaid).toISOString().slice(0, 19).replace('T', ' ');
+
+    let query = `INSERT INTO Transactions (rental_id, payment_method , payment_amount, date_paid)
+    VALUES('${rentalID}', '${data.paymentMethod}', '${paymentAmount}', '${datePaid}' );`;
+    
+    db.pool.query(query, function(error, result) {
+        if (error) {
+            console.error("Error inserting transaction: ", error);
+            res.status(500).send("Error inserting transaction");
+            return;
+        }
+        
+        // Query the database to get the inserted client data
+        let selectQuery = 'SELECT * FROM Transactions WHERE rental_ID = LAST_INSERT_ID()';
+        db.pool.query(selectQuery, function(selectError, selectResult) {
+            if (selectError) {
+                console.error("Error retrieving inserted transaction:", selectError);
+                res.status(500).send("Error retrieving inserted transaction");
+                return;
+            }
+            // Send the inserted client data as response
+            res.status(200).json(selectResult);
+        });
+    });
+})
 
 app.get('/rental_histories', function(req, res){
     let query = "SELECT * FROM Rental_Histories"
@@ -236,6 +277,45 @@ app.get('/reviews', function(req, res){
         res.render('reviews', { reviews: results });
     });
 })
+app.post('/add-review-form', function(req, res) {
+    let data = req.body;
+
+    console.log('Request body:', req.body); // Log the request body to see if data is being received
+    console.log('Received data:', data); // Log received data
+
+    /*
+        clientID: inputClientID,
+        buildingID: inputBuildingID,
+        rating: inputRating,
+        comment: inputComment
+    */
+    let clientID = parseInt(data.clientID);
+    let buildingID = parseInt(data.buildingID);
+    let rating = parseInt(data.rating);
+
+    let query = `INSERT INTO Reviews (client_id, building_id, rating, comments)
+    VALUES (${clientID}, ${buildingID}, '${rating}', '${data.comment}')`;
+    
+    db.pool.query(query, function(error, result) {
+        if (error) {
+            console.error("Error inserting review:", error);
+            res.status(500).send("Error inserting review");
+            return;
+        }
+        
+        // Query the database to get the inserted client data
+        let selectQuery = 'SELECT * FROM Reviews WHERE review_ID = LAST_INSERT_ID()';
+        db.pool.query(selectQuery, function(selectError, selectResult) {
+            if (selectError) {
+                console.error("Error retrieving inserted review:", selectError);
+                res.status(500).send("Error retrieving inserted review");
+                return;
+            }
+            // Send the inserted client data as response
+            res.status(200).json(selectResult);
+        });
+    });
+});
 
 
 app.listen(PORT, function() {
