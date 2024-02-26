@@ -38,9 +38,12 @@
 
     <table id="hosts-table">
 
-        <form action="/search" method="get">
-            <input type="text" id="searchInput" name="searchInput" placeholder="Search by Host ID">
-            <input type="submit" value="Search">
+        <form id="search-hosts" method="GET" action="/hosts"> 
+            <label for="input-hostsName" >Search by Host Name: </label>
+            <input type="text" name="host_name" id="input-hostsName" placeholder="enter hosts name">
+
+            <input type="submit">
+            <a href="/hosts"><button>Reset</button></a>
         </form>
 
         <thead>
@@ -86,6 +89,6 @@
         <input type="submit">
     </form>
 
-    <script src="/js/add_hosts.js"> </script>
+    <script src="/js/add/add_hosts.js"> </script>
 </body>
 </html>

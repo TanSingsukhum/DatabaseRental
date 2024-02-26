@@ -37,11 +37,14 @@
     <a href='/'><button>Home</button></a>
 
     <table id="client-table">
+        <form id="search-clients" method="GET" action="/clients"> 
+            <label for="input-clientName" >Search by Host Name: </label>
+            <input type="text" name="client_name" id="input-clientName" placeholder="Enter client name">
 
-        <form action="/search" method="get">
-            <input type="text" id="searchInput" name="searchInput" placeholder="Search by Client ID">
-            <input type="submit" value="Search">
+            <input type="submit">
+            <a href="/clients"><button>Reset</button></a>
         </form>
+
 
         <thead>
             <tr>
@@ -80,6 +83,7 @@
     </table>
 
 
+
     <form id="add-client-form">
         <label for="input-buildingID">Building ID: </label>
         <input type="text" name="input-buildingID" id="input-buildingID">
@@ -111,6 +115,6 @@
     </form>
 
 
-    <script src="/js/add_client.js"></script>
+    <script src="/js/add/add_client.js"></script>
 </body>
 </html>

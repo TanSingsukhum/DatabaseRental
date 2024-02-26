@@ -18,7 +18,13 @@ app.get('/', function(req, res) {
 });
 
 app.get('/buildings', function(req,res){
-    let query = "SELECT * FROM Buildings";
+    let query;
+
+    if(req.query.building_id === undefined){
+        query = "SELECT * FROM Buildings";
+    }else{
+        query = `SELECT * FROM Buildings WHERE building_id LIKE "${req.query.building_id}%"`
+    }
     db.pool.query(query, function(err, results) {
         if (err) {
             console.error("Error retrieving buildings:", err);
@@ -71,7 +77,13 @@ app.post('/add-building-form', function(req, res) {
 
 //Get table from hosts
 app.get('/hosts', function(req, res) {
-    let query = "SELECT * FROM Hosts";
+    let query;
+
+    if(req.query.host_name === undefined){
+        query = "SELECT * FROM Hosts";
+    }else{
+        query = `SELECT * FROM Hosts WHERE host_name LIKE "${req.query.host_name}%"`
+    }
     db.pool.query(query, function(err, results) {
         if (err) {
             console.error("Error retrieving hosts:", err);
@@ -122,7 +134,13 @@ app.post('/add-hosts-form', function(req, res){
 });
 
 app.get('/clients', function(req,res){
-    let query = "SELECT * FROM Clients";
+    let query;
+
+    if(req.query.client_name === undefined){
+        query = "SELECT * FROM Clients";
+    }else{
+        query = `SELECT * FROM Clients WHERE client_name LIKE "${req.query.client_name}%"`
+    }
     db.pool.query(query, function(err, results) {
         if (err) {
             console.error("Error retrieving hosts:", err);
@@ -164,6 +182,8 @@ app.post('/add-client-form', function(req, res) {
         });
     });
 });
+
+
 
 
 

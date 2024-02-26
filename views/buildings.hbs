@@ -36,10 +36,13 @@
     <h1>Buildings</h1>
     <a href='/'><button>Home</button></a>
 
-    <form action="/search" method="get">
-        <input type="text" id="searchInput" name="searchInput" placeholder="Search by Building ID">
-        <input type="submit" value="Search">
-    </form>
+        <form id="search-buildings" method="GET" action="/buildings"> 
+            <label for="input-buildingID" >Search by Building Name: </label>
+            <input type="text" name="building_id" id="input-buildingID" placeholder="Enter building ID">
+
+            <input type="submit">
+            <a href="/buildings"><button>Reset</button></a>
+        </form>
 
     <table id="buildings-table">
         <thead>
@@ -109,6 +112,6 @@
         <input type="submit">
     </form>
 
-    <script src="/js/add_building.js"> </script>
+    <script src="/js/add/add_building.js"> </script>
 </body>
 </html>
