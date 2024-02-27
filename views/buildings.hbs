@@ -74,13 +74,13 @@
                     <td>{{this.city}}</td>
                     <td>{{this.address}}</td>
                     <td>{{this.zipcode}}</td>
-                    <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
                     <td><button class="Delete-button" onclick="deleteBuilding({{this.building_id}})">Delete</button></td>
                 </tr>
             {{/each}}
         </tbody>
     </table>
 
+    <h1>Add a Building</h1>
     <form id="add-building-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-hostID">Host ID: </label>
         <input type="number" name="input-hostID" id="input-hostID">
@@ -112,8 +112,21 @@
         <input type="submit">
     </form>
 
+    <h1>Update a Building's Rental Amount</h1>
+    <form id="update-building-form" onsubmit="updateBuildingRent(); return false;">
+        <select id="building-select" name="building-select">
+            <option value="">Select a Building</option>
+            {{#each buildings}}
+            <option value="{{this.building_id}}">{{this.building_id}}</option>
+            {{/each}}
+        </select>
+        <input type="number" id="new-rent" name="new-rent" placeholder="Enter new rent amount">
+        <input type="submit" value="Update Rent">
+    </form>
+
     <script src="/js/add/add_building.js"> </script>
     <script src="/js/delete/delete_building.js"></script>
+    <script src="/js/update/update_building.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </body>

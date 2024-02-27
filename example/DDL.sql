@@ -52,7 +52,7 @@ CREATE OR REPLACE TABLE Clients (
     client_id INT AUTO_INCREMENT UNIQUE NOT NULL,
     building_id INT NOT NULL,
     phone_number VARCHAR(12) NOT NULL,
-    client_name VARCHAR(255) NOT NULL,  -- Specify the length for client_name
+    client_name VARCHAR(255) NOT NULL,  
     client_email VARCHAR(255) NOT NULL,
     state VARCHAR(255) NOT NULL,
     city VARCHAR(255) NOT NULL,

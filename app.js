@@ -89,6 +89,23 @@ app.delete('/delete-building/:buildingID', function(req,res,next){
             }
         });
 });
+//UPDATE
+app.put('/update-building/:buildingID', function(req, res, next) {
+    let newRent = req.body.rent_amount;
+    let buildingID = req.params.buildingID;
+
+    let updateQuery = 'UPDATE Buildings SET rent_amount = ? WHERE building_id = ?';
+
+    db.pool.query(updateQuery, [newRent, buildingID], function(error, rows, fields) {
+        if (error) {
+            console.error('Error updating rent amount:', error);
+            res.sendStatus(400);
+        } else {
+            res.sendStatus(200);
+        }
+    });
+});
+
 
 //Get table from hosts
 app.get('/hosts', function(req, res) {
@@ -228,6 +245,22 @@ app.delete('/delete-clients/:clientID', function(req,res,next){
             res.sendStatus(400);
         }else{
             res.sendStatus(200);
+        }
+    });
+});
+// UPDATE
+app.put('/update-client/:clientName', function(req, res) {
+    const clientName = req.params.clientName;
+    const newPhoneNumber = req.body.phone_number;
+    
+    const updateQuery = 'UPDATE Clients SET phone_number = ? WHERE client_name = ?';
+    db.pool.query(updateQuery, [newPhoneNumber, clientName], function(error, results, fields) {
+        if (error) {
+            console.error('Error updating client phone number:', error);
+            res.status(500).json({ error: 'An error occurred while updating client phone number' });
+        } else {
+            console.log('Client phone number updated successfully');
+            res.status(200).json({ message: 'Client phone number updated successfully' });
         }
     });
 });
