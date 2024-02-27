@@ -34,7 +34,7 @@ app.get('/buildings', function(req,res){
         res.render('buildings', { buildings: results });
     });
 })
-
+//CREATE
 app.post('/add-building-form', function(req, res) {
     let data = req.body;
 
@@ -73,7 +73,22 @@ app.post('/add-building-form', function(req, res) {
 
     });
 });
+//DELETE
+app.delete('/delete-building/:buildingID', function(req,res,next){
+        console.log("Here in delete route");
+        let data = req.body;
+        console.log(req.params.buildingID);
+        let deleteBuilding_ID = `DELETE FROM Buildings WHERE building_id = ?`;
 
+        db.pool.query(deleteBuilding_ID, [req.params.buildingID], function(error, rows, fields){
+            if(error){
+                console.log(error)
+                res.sendStatus(400);
+            }else{
+                res.sendStatus(200);
+            }
+        });
+});
 
 //Get table from hosts
 app.get('/hosts', function(req, res) {
@@ -93,7 +108,7 @@ app.get('/hosts', function(req, res) {
         res.render('hosts', { hosts: results });
     });
 });
-
+//CREATE
 app.post('/add-hosts-form', function(req, res){
     let data = req.body;
     console.log('Request body:', req.body); // Log the request body to see if data is being received
@@ -132,6 +147,24 @@ app.post('/add-hosts-form', function(req, res){
     });
     
 });
+//DELETE
+app.delete('/delete-hosts/:hostID', function(req,res,next){
+    console.log("Here in delete route");
+    let data = req.body;
+    console.log(req.params.hostID);
+    
+    let deleteHost_ID = `DELETE FROM Hosts WHERE host_id = ?`;
+    console.log(deleteHost_ID);
+
+    db.pool.query(deleteHost_ID, [req.params.hostID], function(error, rows, fields){
+        if(error){
+            console.log(error)
+            res.sendStatus(400);
+        }else{
+            res.sendStatus(200);
+        }
+    });
+});
 
 app.get('/clients', function(req,res){
     let query;
@@ -150,7 +183,7 @@ app.get('/clients', function(req,res){
         res.render('clients', { clients: results });
     });
 })
-
+//CREATE
 app.post('/add-client-form', function(req, res) {
     let data = req.body;
     console.log('Request body:', req.body); // Log the request body to see if data is being received
@@ -182,6 +215,22 @@ app.post('/add-client-form', function(req, res) {
         });
     });
 });
+//DELETE
+app.delete('/delete-clients/:clientID', function(req,res,next){
+    console.log("Here in delete route");
+    let data = req.body;
+    console.log(req.params.clientID);
+    let deleteClient_ID = `DELETE FROM Clients WHERE client_id = ?`;
+
+    db.pool.query(deleteClient_ID, [req.params.clientID], function(error, rows, fields){
+        if(error){
+            console.log(error)
+            res.sendStatus(400);
+        }else{
+            res.sendStatus(200);
+        }
+    });
+});
 
 
 
@@ -205,6 +254,7 @@ app.get('/transactions', function(req,res){
         res.render('transactions', { transactions: results });
     });
 })
+//UPDATE
 app.post('/add-transaction-form', function(req,res){
 
     /*
@@ -246,6 +296,22 @@ app.post('/add-transaction-form', function(req,res){
         });
     });
 })
+//DELETE
+app.delete('/delete-transaction/:transactionID', function(req,res,next){
+    console.log("Here in delete route");
+    let data = req.body;
+    console.log(req.params.transactionID);
+    let deleteTransaction_ID = `DELETE FROM Transactions WHERE transaction_id = ?`;
+
+    db.pool.query(deleteTransaction_ID, [req.params.transactionID], function(error, rows, fields){
+        if(error){
+            console.log(error)
+            res.sendStatus(400);
+        }else{
+            res.sendStatus(200);
+        }
+    });
+});
 
 app.get('/rental_histories', function(req, res){
     let query;
@@ -264,6 +330,7 @@ app.get('/rental_histories', function(req, res){
         res.render('rental_histories', { rental_histories: results });
     });
 })
+//CREATE
 app.post('/add-rentalHistory-form', function(req, res) {
     let data = req.body;
     console.log('Request body:', req.body); // Log the request body to see if data is being received
@@ -297,6 +364,23 @@ app.post('/add-rentalHistory-form', function(req, res) {
         });
     });
 });
+//DELETE
+app.delete('/delete-rentalHistory/:rentalID', function(req,res,next){
+    console.log("Here in delete route");
+    let data = req.body;
+    console.log(req.params.rentalID);
+    let deleteRental_ID = `DELETE FROM Rental_Histories WHERE rental_id = ?`;
+
+    db.pool.query(deleteRental_ID, [req.params.rentalID], function(error, rows, fields){
+        if(error){
+            console.log(error)
+            res.sendStatus(400);
+        }else{
+            res.sendStatus(200);
+        }
+    });
+});
+
 
 
 app.get('/reviews', function(req, res){
@@ -316,6 +400,7 @@ app.get('/reviews', function(req, res){
         res.render('reviews', { reviews: results });
     });
 })
+//CREATE
 app.post('/add-review-form', function(req, res) {
     let data = req.body;
 
@@ -355,7 +440,22 @@ app.post('/add-review-form', function(req, res) {
         });
     });
 });
+//DELETE
+app.delete('/delete-reviews/:reviewID', function(req,res,next){
+    console.log("Here in delete route");
+    let data = req.body;
+    console.log(req.params.reviewID);
+    let deleteReview_ID = `DELETE FROM Reviews WHERE review_id = ?`;
 
+    db.pool.query(deleteReview_ID, [req.params.reviewID], function(error, rows, fields){
+        if(error){
+            console.log(error)
+            res.sendStatus(400);
+        }else{
+            res.sendStatus(200);
+        }
+    });
+});
 
 app.listen(PORT, function() {
     console.log('Server listening on port ' + PORT);

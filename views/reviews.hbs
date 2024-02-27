@@ -65,14 +65,14 @@
                     <td>{{this.rating}}</td>
                     <td>{{this.comments}}</td>
                     <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
-                    <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
+                    <td><button class="Delete-button" onclick="deleteReviews({{this.review_id}})">Delete</button></td>
                 </tr>
             {{/each}}
             <!-- Add a single row for all input boxes and the Enter button -->
         </tbody>
     </table>
 
-    <form id="add-review-form">
+    <form id="add-review-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
 
         <label for="input-clientID">Enter Client ID: </label>
         <input type="text" name="input-clientID" id="input-clientID">
@@ -91,5 +91,7 @@
     </form>
 
     <script src="/js/add/add_review.js"> </script>
+    <script src="/js/delete/delete_reviews.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

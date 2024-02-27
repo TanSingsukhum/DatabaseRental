@@ -66,14 +66,14 @@
                     <td>{{this.host_phone_number}}</td>
                     <td>{{this.number_buildings_owned}}</td>
                     <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
-                    <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
+                    <td><button class="Delete-button" onclick="deleteHosts({{this.host_id}})">Delete</button></td>
                 </tr>
             {{/each}}
             <!-- Add a single row for all input boxes and the Enter button -->
         </tbody>
     </table>
 
-    <form id="add-hosts-form">
+    <form id="add-hosts-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-hostName">Host Name: </label>
         <input type="text" name="input-hostName" id="input-hostName">
 
@@ -90,5 +90,8 @@
     </form>
 
     <script src="/js/add/add_hosts.js"> </script>
+    <script src="/js/delete/delete_hosts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </body>
 </html>

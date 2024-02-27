@@ -74,7 +74,7 @@
                     <td>{{this.address}}</td>
                     <td>{{this.zipcode}}</td>
                     <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
-                    <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
+                    <td><button class="Delete-button" onclick="deleteClients({{this.client_id}})">Delete</button></td>
                 </tr>
             {{/each}}
             <!-- Add a single row for all input boxes and the Enter button -->
@@ -84,7 +84,7 @@
 
 
 
-    <form id="add-client-form">
+    <form id="add-client-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-buildingID">Building ID: </label>
         <input type="text" name="input-buildingID" id="input-buildingID">
 
@@ -116,5 +116,8 @@
 
 
     <script src="/js/add/add_client.js"></script>
+    <script src="/js/delete/delete_clients.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </body>
 </html>

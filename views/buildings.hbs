@@ -75,13 +75,13 @@
                     <td>{{this.address}}</td>
                     <td>{{this.zipcode}}</td>
                     <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
-                    <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
+                    <td><button class="Delete-button" onclick="deleteBuilding({{this.building_id}})">Delete</button></td>
                 </tr>
             {{/each}}
         </tbody>
     </table>
 
-    <form id="add-building-form">
+    <form id="add-building-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-hostID">Host ID: </label>
         <input type="number" name="input-hostID" id="input-hostID">
 
@@ -113,5 +113,8 @@
     </form>
 
     <script src="/js/add/add_building.js"> </script>
+    <script src="/js/delete/delete_building.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </body>
 </html>

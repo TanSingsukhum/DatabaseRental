@@ -65,7 +65,7 @@
                     <td>{{this.payment_amount}}</td>
                     <td>{{this.date_paid}}</td>
                     <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
-                    <td><button class="Delete-button" onclick="submitHostData('delete')">Delete</button></td>
+                    <td><button class="Delete-button" onclick="deleteTransaction({{this.transaction_id}})">Delete</button></td>
                 </tr>
             {{/each}}
  
@@ -74,7 +74,7 @@
 
 
 
-    <form id="add-transaction-form">
+    <form id="add-transaction-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-rentalID">Enter a Rental ID: </label>
         <input type="number" name="input-rentalID" id="input-rentalID">
 
@@ -88,9 +88,11 @@
         <label for="input-datePaid">Enter Date Paid: </label>
         <input type="date" name="input-datePaid" id="input-datePaid">
 
-        <input type="submit">
+        <input type="submit" action="/transactions">
     </form>
 
     <script src="/js/add/add_transaction.js"></script>
+    <script src="/js/delete/delete_transactions.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>
