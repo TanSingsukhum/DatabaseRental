@@ -73,25 +73,23 @@
         </tbody>
     </table>
 
-    <h1>Add a Rental History Entry</h1>
-    <form id="add-rentalHistory-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
-        <label for="input-clientID">Enter Client ID: </label>
-        <input type="text" name="input-clientID" id="input-clientID">
-
-        <label for="input-buildingID">Enter Building ID: </label>
-        <input type="text" name="input-buildingID" id="input-buildingID">
-
-        <label for="input-leaseStart">Enter Lease Start Date: </label>
-        <input type="date" name="input-leaseStart" id="input-leaseStart">
-
-        <label for="input-leaseEnd">Enter Lease End Date: </label>
-        <input type="date" name="input-leaseEnd" id="input-leaseEnd">
-
-        <input type="submit">
+    <h1>Update Lease End Date</h1>
+    <form id="update-rental-history-form" onsubmit="updateLeaseEndDate(); return false;">
+        <select id="rentalIdSelect" name="rentalIdSelect">
+            <option value="">Select a Rental ID</option>
+            {{#each rental_histories}}
+            <option value="{{this.rental_id}}">{{this.rental_id}}</option>
+            {{/each}}
+        </select>
+        <input type="date" id="newLeaseEndDate" name="newLeaseEndDate" placeholder="Select Lease End Date">
+        <button type="submit">Update Lease End Date</button>
     </form>
+
+    
 
     <script src="/js/add/add_rentalHistory.js"></script>
     <script src="/js/delete/delete_rentalHistory.js"></script>
+    <script src="/js/update/update_rentalHistory.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

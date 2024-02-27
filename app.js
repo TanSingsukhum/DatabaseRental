@@ -182,6 +182,25 @@ app.delete('/delete-hosts/:hostID', function(req,res,next){
         }
     });
 });
+//UPDATE
+app.put('/update-hosts/:hostID', function(req, res) {
+    const hostID = req.params.hostID;
+    const newBuildingsOwned = req.body.number_buildings_owned;
+    console.log(newBuildingsOwned)
+    console.log(hostID)
+    
+    const updateQuery = 'UPDATE Hosts SET number_buildings_owned = ? WHERE host_id = ?';
+
+    db.pool.query(updateQuery, [newBuildingsOwned, hostID], function(error, results, fields) {
+        if (error) {
+            console.error('Error updating host buildings owned:', error);
+            res.status(500).json({ error: 'An error occurred while updating buildings owned' });
+        } else {
+            console.log('Buildings owned updated successfully');
+            res.status(200).json({ message: 'Buildings owned updated successfully' });
+        }
+    });
+});
 
 app.get('/clients', function(req,res){
     let query;
@@ -345,6 +364,25 @@ app.delete('/delete-transaction/:transactionID', function(req,res,next){
         }
     });
 });
+// UPDATE 
+app.put('/update-transaction/:transactionId', function(req, res) {
+    const transactionId = req.params.transactionId;
+    const newPaymentAmount = req.body.payment_amount;
+    console.log(newPaymentAmount);
+    console.log(transactionId);
+    
+    const updateQuery = 'UPDATE Transactions SET payment_amount = ? WHERE transaction_id = ?';
+    db.pool.query(updateQuery, [newPaymentAmount, transactionId], function(error, results, fields) {
+        if (error) {
+            console.error('Error updating transaction payment amount:', error);
+            res.status(500).json({ error: 'An error occurred while updating payment amount' });
+        } else {
+            console.log('Payment amount updated successfully');
+            res.status(200).json({ message: 'Payment amount updated successfully' });
+        }
+    });
+});
+
 
 app.get('/rental_histories', function(req, res){
     let query;
@@ -413,7 +451,23 @@ app.delete('/delete-rentalHistory/:rentalID', function(req,res,next){
         }
     });
 });
+//UPDATE
+app.put('/update-rental-history/:rentalId', function(req, res) {
+    const rentalId = req.params.rentalId;
+    const newLeaseEndDate = req.body.lease_end_date;
 
+    // Update the lease end date in the database
+    const updateQuery = 'UPDATE Rental_Histories SET lease_end_date = ? WHERE rental_id = ?';
+    db.pool.query(updateQuery, [newLeaseEndDate, rentalId], function(error, results, fields) {
+        if (error) {
+            console.error('Error updating lease end date:', error);
+            res.status(500).json({ error: 'An error occurred while updating lease end date' });
+        } else {
+            console.log('Lease end date updated successfully');
+            res.status(200).json({ message: 'Lease end date updated successfully' });
+        }
+    });
+});
 
 
 app.get('/reviews', function(req, res){
@@ -486,6 +540,27 @@ app.delete('/delete-reviews/:reviewID', function(req,res,next){
             res.sendStatus(400);
         }else{
             res.sendStatus(200);
+        }
+    });
+});
+//UPDATE
+app.put('/update-review/:reviewId', function(req, res) {
+    const reviewId = req.params.reviewId;
+    const newRating = req.body.rating;
+    const newComment = req.body.comment;
+
+    console.log(reviewId);
+    console.log(newRating);
+    console.log(newComment);
+
+    const updateQuery = 'UPDATE Reviews SET rating = ?, comments = ? WHERE review_id = ?';
+    db.pool.query(updateQuery, [newRating, newComment, reviewId], function(error, results, fields) {
+        if (error) {
+            console.error('Error updating review:', error);
+            res.status(500).json({ error: 'An error occurred while updating review' });
+        } else {
+            console.log('Review updated successfully');
+            res.status(200).json({ message: 'Review updated successfully' });
         }
     });
 });

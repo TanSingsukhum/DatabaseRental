@@ -7,13 +7,11 @@ function updateClientPhoneNumber() {
         type: 'PUT',
         data: { phone_number: newPhoneNumber },
         success: function(result) {
-            // Handle success (e.g., show a success message)
             console.log(result)
             alert('Phone number updated successfully.');
             location.reload();
         },
         error: function(xhr, status, error) {
-            // Handle error (e.g., show an error message)
             console.error(error);
         }
     });

@@ -52,7 +52,6 @@
                 <th>Payment Method</th>
                 <th>Payment Amount</th>
                 <th>Date Paid</th>
-                <th>Update</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -64,7 +63,6 @@
                     <td>{{this.payment_method}}</td>
                     <td>{{this.payment_amount}}</td>
                     <td>{{this.date_paid}}</td>
-                    <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
                     <td><button class="Delete-button" onclick="deleteTransaction({{this.transaction_id}})">Delete</button></td>
                 </tr>
             {{/each}}
@@ -91,8 +89,21 @@
         <input type="submit" action="/transactions">
     </form>
 
+    <h1>Update Payment Amount</h1>
+    <form id="update-transaction-form" onsubmit="updatePaymentAmount(); return false;">
+        <select id="transactionIdSelect" name="transactionIdSelect">
+            <option value="">Select a Transaction ID</option>
+            {{#each transactions}}
+                <option value="{{this.transaction_id}}">{{this.transaction_id}}</option>
+            {{/each}}
+        </select>
+        <input type="number" id="paymentAmount" name="paymentAmount" placeholder="New Payment Amount">
+        <button type="submit">Update Payment Amount</button>
+    </form>
+
     <script src="/js/add/add_transaction.js"></script>
     <script src="/js/delete/delete_transactions.js"></script>
+    <script src="/js/update/update_transactions.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

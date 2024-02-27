@@ -53,7 +53,6 @@
                 <th>Email</th>
                 <th>Phone Number</th>
                 <th>Number of Buildings Owned</th>
-                <th>Update</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -65,7 +64,6 @@
                     <td>{{this.host_email}}</td>
                     <td>{{this.host_phone_number}}</td>
                     <td>{{this.number_buildings_owned}}</td>
-                    <td><button class="Edit-button" onclick="submitHostData('edit')">Update</button></td>
                     <td><button class="Delete-button" onclick="deleteHosts({{this.host_id}})">Delete</button></td>
                 </tr>
             {{/each}}
@@ -90,9 +88,24 @@
         <input type="submit">
     </form>
 
+
+    <h1>Update Number of Buildings owned</h1>
+    <form id="update-host-form" onsubmit="updateBuildingsOwned(); return false;">
+        <select id="hostIDSelect" name="hostIDSelect">
+            <option value="">Select a Host</option>
+            {{#each hosts}}
+            <option value="{{this.host_id}}">{{this.host_id}}</option>
+            {{/each}}
+        </select>
+        <input type="number" id="buildingsOwned" name="buildingsOwned" placeholder="New Buildings Owned">
+        <button type="submit">Update Buildings Owned</button>
+    </form>
+
     <script src="/js/add/add_hosts.js"> </script>
     <script src="/js/delete/delete_hosts.js"></script>
+    <script src="/js/update/update_hosts.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 </body>
 </html>
