@@ -25,6 +25,10 @@ addClientBuilding.addEventListener("submit", function(e){
         zipcode: inputZipcode
     }
 
+    if (inputHostID === '' || inputZipcode === '' || inputAddress === '' || inputClient === '' || inputState === '' || inputCity === '' || inputBedroom === '' || inputBathroom === '' || inputAmount === '') {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
     //AJAX request
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/add-building-form", true);

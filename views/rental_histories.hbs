@@ -76,10 +76,20 @@
     <h1>Add Rental History</h1>
     <form id="add-rentalHistory-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-clientID">Client ID: </label>
-        <input type="number" name="input-clientID" id="input-clientID">
+        <select id="input-clientID" name="input-clientID">
+            <option value="">Select a Client ID</option>
+            {{#each rental_histories}}
+            <option value="{{this.client_id}}">{{this.client_id}}</option>
+            {{/each}}
+        </select>
 
         <label for="input-buildingID">Building ID: </label>
-        <input type="number" name="input-buildingID" id="input-buildingID">
+        <select id="input-buildingID" name="input-buildingID">
+            <option value="">Select a Building ID</option>
+            {{#each rental_histories}}
+            <option value="{{this.building_id}}">{{this.building_id}}</option>
+            {{/each}}
+        </select>
 
         <label for="input-leaseStart">Lease Start Date: </label>
         <input type="date" name="input-leaseStart" id="input-leaseStart">

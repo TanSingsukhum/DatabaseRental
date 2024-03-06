@@ -3,6 +3,15 @@ function updateReview() {
     var newRating = document.getElementById("inputRating").value;
     var newComment = document.getElementById("inputComment").value;
 
+
+    if (reviewId === '' || newRating === '' || newComment === '' ) {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
+    if(newRating < 0 || newRating > 5){
+        alert("Rating must be between 0-5")
+        return;
+    }
     console.log(newRating)
     if (!newRating) {
         console.error("Rating is empty");

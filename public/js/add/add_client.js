@@ -23,6 +23,12 @@ addClientForm.addEventListener("submit", function (e) {
         zipcode: inputZipcode
     };
 
+    if (inputBuildingID === '' || inputEmail === '' || inputState === '' || inputPhoneNumber === '' || inputName === '' || inputAddress === '' || inputZipcode === '') {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
+
+
     // AJAX request
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/add-client-form", true);

@@ -1,7 +1,12 @@
 function updateClientPhoneNumber() {
     var clientName = document.getElementById("clientNameSelect").value;
     var newPhoneNumber = document.getElementById("clientPhoneNumber").value;
-    
+
+    if (clientName === '' || newPhoneNumber === '' ) {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
+
     $.ajax({
         url: '/update-client/' + encodeURIComponent(clientName),
         type: 'PUT',

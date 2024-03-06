@@ -2,6 +2,11 @@ function updateLeaseEndDate() {
     var rentalId = document.getElementById("rentalIdSelect").value;
     var newLeaseEndDate = document.getElementById("newLeaseEndDate").value;
     
+    if (rentalId === '' || newLeaseEndDate === '' ) {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
+
     $.ajax({
         url: '/update-rental-history/' + encodeURIComponent(rentalId),
         type: 'PUT',

@@ -8,6 +8,12 @@ addTransactionForm.addEventListener("submit", function (e) {
     let inputPaymentAmount = document.getElementById("input-paymentAmount").value;
     let inputDatePaid = document.getElementById("input-datePaid").value;
 
+
+    if (inputRentalID === '' || inputPaymentAmount === '' || inputPaymentMethod === '' || inputDatePaid === '') {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
+    
     let data = {
         rentalID: inputRentalID,
         paymentMethod: inputPaymentMethod,

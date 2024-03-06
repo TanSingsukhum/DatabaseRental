@@ -74,16 +74,27 @@
     <form id="add-review-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
 
         <label for="input-clientID">Enter Client ID: </label>
-        <input type="text" name="input-clientID" id="input-clientID">
+        <select id="input-clientID" name="input-clientID">
+            <option value="">Select a Client ID</option>
+            {{#each reviews}}
+                <option value="{{this.client_id}}">{{this.client_id}}</option>
+            {{/each}}
+        </select>
+
 
         <label for="input-buildingID">Enter Building ID</label>
-        <input type="text" name="input-buildingID" id="input-buildingID">
+        <select id="input-buildingID" name="input-buildingID">
+            <option value="">Select a Building ID</option>
+            {{#each reviews}}
+                <option value="{{this.building_id}}">{{this.building_id}}</option>
+            {{/each}}
+        </select>
 
         <label for="input-rating">Enter Rating: </label>
-        <input type="number" name="input-rating" id="input-rating">
+        <input type="number" name="input-rating" id="input-rating" placeholder="Enter Rating (0-5)">
 
         <label for="input-comment">Enter A Comment: </label>
-        <input type="text" name="input-comment" id="input-comment">
+        <input type="text" name="input-comment" id="input-comment" placeholder="Enter A Comment">
 
         <input type="submit">
 

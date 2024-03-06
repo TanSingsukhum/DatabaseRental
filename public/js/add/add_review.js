@@ -15,6 +15,16 @@ addReviewForm.addEventListener("submit", function (e) {
         comment: inputComment
     };
 
+    if (inputClientID === '' || inputBuildingID === '' || inputRating === '' || inputComment === '') {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
+
+    if(inputRating < 0 || inputRating > 5){
+        alert("Rating must be between 0-5")
+        return;
+    }
+
     // AJAX request
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/add-review-form", true);

@@ -14,6 +14,10 @@ addRentalHistoryForm.addEventListener("submit", function (e) {
         leaseStartDate: inputLeaseStart,
         leaseEndDate: inputLeaseEnd
     };
+    if (inputClientID === '' || inputBuildingID === '' || inputLeaseEnd === '' || inputLeaseStart === '') {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
 
     // AJAX request
     var xhttp = new XMLHttpRequest();

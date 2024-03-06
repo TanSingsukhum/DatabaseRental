@@ -15,6 +15,11 @@ addHostForm.addEventListener("submit", function (e) {
         numberBuildingsOwned: inputNumberBuildings
     };
 
+    if (inputName === '' || inputEmail === '' || inputPhoneNumber === '' || inputNumberBuildings === '') {
+        alert("Please fill out all fields.");
+        return; 
+    }
+
     // AJAX request
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST", "/add-hosts-form", true);
@@ -22,21 +27,25 @@ addHostForm.addEventListener("submit", function (e) {
 
     // Resolve AJAX
     xhttp.onreadystatechange = () => {
-        if (xhttp.readyState == 4 && xhttp.status == 200) {
-            addRowToTable(xhttp.response);
+        if (xhttp.readyState == 4) {
+            if (xhttp.status == 200) {
+                addRowToTable(xhttp.response);
 
-            // Clear input fields
-            document.getElementById("input-hostName").value = '';
-            document.getElementById("input-email").value = '';
-            document.getElementById("input-phoneNumber").value = '';
-            document.getElementById("input-buildingsOwned").value = '';
-            alert("Data successfully added!");
+                document.getElementById("input-hostName").value = '';
+                document.getElementById("input-email").value = '';
+                document.getElementById("input-phoneNumber").value = '';
+                document.getElementById("input-buildingsOwned").value = '';
+                alert("Host successfully added!");
+            } else if (xhttp.status == 500) {
+                alert("Building ID or Client ID does not exist!");
+            }
         }
     };
 
     // Send data with the request
     xhttp.send(JSON.stringify(data));
 });
+
 
 addRowToTable = (data) => {
     let currentTable = document.getElementById("hosts-table");

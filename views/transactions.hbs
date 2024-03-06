@@ -74,13 +74,18 @@
     <h1>Add a Transaction</h1>
     <form id="add-transaction-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-rentalID">Enter a Rental ID: </label>
-        <input type="number" name="input-rentalID" id="input-rentalID">
+        <select id="input-rentalID" name="input-rentalID">
+            <option value="">Select a Rental ID</option>
+            {{#each transactions}}
+                <option value="{{this.rental_id}}">{{this.rental_id}}</option>
+            {{/each}}
+        </select>
 
         <label for="input-paymentMethod">Enter Payment Method: </label>
-        <input type="text" name="input-paymentMethod" id="input-paymentMethod">
+        <input type="text" name="input-paymentMethod" id="input-paymentMethod" placeholder="Enter Payment Method">
 
         <label for="input-paymentAmount">Enter Payment Amount: </label>
-        <input type="number" step="any" name="input-paymentAmount" id="input-paymentAmount">
+        <input type="number" step="any" name="input-paymentAmount" id="input-paymentAmount" placeholder="Enter Payment Amount">
 
         
         <label for="input-datePaid">Enter Date Paid: </label>

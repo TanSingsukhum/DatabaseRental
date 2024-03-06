@@ -2,6 +2,11 @@ function updateBuildingRent() {
     var buildingId = document.getElementById('building-select').value;
     var newRent = document.getElementById('new-rent').value;
 
+    if (newRent === '' || buildingId === '' ) {
+        alert("Please fill out all fields.");
+        return; // Prevent form submission if any field is empty
+    }
+
     var link = '/update-building/' + buildingId;
     $.ajax({
         url: link,
