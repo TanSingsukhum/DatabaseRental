@@ -136,11 +136,10 @@ app.post('/add-hosts-form', function(req, res){
         hostPhoneNumber: inputPhoneNumber,
         numberBuildingsOwned: inputNumberBuildings
     */
-    let phoneNumber = parseInt(data.hostPhoneNumber);
     let buildingsNumber = parseInt(data.numberBuildingsOwned);
 
     let query = `INSERT INTO Hosts( host_name, host_email, host_phone_number, number_buildings_owned) 
-    VALUES('${data.hostName}', '${data.hostEmail}', '${phoneNumber}', '${buildingsNumber}');`
+    VALUES('${data.hostName}', '${data.hostEmail}', '${data.hostPhoneNumber}', '${buildingsNumber}');`
 
     db.pool.query(query, function(error, result) {
         if (error) {
@@ -225,11 +224,10 @@ app.post('/add-client-form', function(req, res) {
     console.log('Request body:', req.body); // Log the request body to see if data is being received
     console.log('Received data:', data); // Log received data
 
-    let phoneNumber = parseInt(data.phoneNumber);
     let zipcode = parseInt(data.zipcode);
 
     let query = `INSERT INTO Clients (building_id, phone_number, client_name, client_email, state, city, address, zipcode)
-    VALUES ('${data.buildingID}', '${phoneNumber}', '${data.clientName}', '${data.clientEmail}', '${data.state}', '${data.city}', '${data.address}', '${zipcode}')`;
+    VALUES ('${data.buildingID}', '${data.phoneNumber}', '${data.clientName}', '${data.clientEmail}', '${data.state}', '${data.city}', '${data.address}', '${zipcode}')`;
     
     db.pool.query(query, function(error, result) {
         if (error) {

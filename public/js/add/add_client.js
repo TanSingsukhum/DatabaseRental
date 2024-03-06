@@ -11,7 +11,7 @@ addClientForm.addEventListener("submit", function (e) {
     let inputCity = document.getElementById("input-city").value;
     let inputAddress = document.getElementById("input-address").value;
     let inputZipcode = document.getElementById("input-zipcode").value;
-
+    
     let data = {
         buildingID: inputBuildingID,
         phoneNumber: inputPhoneNumber,
@@ -32,7 +32,6 @@ addClientForm.addEventListener("submit", function (e) {
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             addRowToTable(xhttp.response);
-
             // Clear input fields
             document.getElementById("input-buildingID").value = '';
             document.getElementById("input-phoneNumber").value = '';

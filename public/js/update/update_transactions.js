@@ -1,7 +1,6 @@
 function updatePaymentAmount() {
     var transactionId = document.getElementById("transactionIdSelect").value;
     var newPaymentAmount = document.getElementById("paymentAmount").value;
-    console.log(newPaymentAmount);
     $.ajax({
         url: '/update-transaction/' + encodeURIComponent(transactionId),
         type: 'PUT',

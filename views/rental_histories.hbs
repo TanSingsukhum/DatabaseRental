@@ -72,6 +72,23 @@
             <!-- Add a single row for all input boxes and the Enter button -->
         </tbody>
     </table>
+    
+    <h1>Add Rental History</h1>
+    <form id="add-rentalHistory-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
+        <label for="input-clientID">Client ID: </label>
+        <input type="number" name="input-clientID" id="input-clientID">
+
+        <label for="input-buildingID">Building ID: </label>
+        <input type="number" name="input-buildingID" id="input-buildingID">
+
+        <label for="input-leaseStart">Lease Start Date: </label>
+        <input type="date" name="input-leaseStart" id="input-leaseStart">
+
+        <label for="input-leaseEnd">Lease End Date: </label>
+        <input type="date" name="input-leaseEnd" id="input-leaseEnd">
+
+        <input type="submit">
+    </form>
 
     <h1>Update Lease End Date</h1>
     <form id="update-rental-history-form" onsubmit="updateLeaseEndDate(); return false;">
@@ -85,7 +102,6 @@
         <button type="submit">Update Lease End Date</button>
     </form>
 
-    
 
     <script src="/js/add/add_rentalHistory.js"></script>
     <script src="/js/delete/delete_rentalHistory.js"></script>
