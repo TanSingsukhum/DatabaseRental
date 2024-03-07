@@ -6,7 +6,7 @@ function updateLeaseEndDate() {
         alert("Please fill out all fields.");
         return; // Prevent form submission if any field is empty
     }
-
+    //AJAX PUT statement
     $.ajax({
         url: '/update-rental-history/' + encodeURIComponent(rentalId),
         type: 'PUT',

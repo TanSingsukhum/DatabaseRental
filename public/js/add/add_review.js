@@ -3,23 +3,25 @@ let addReviewForm = document.getElementById('add-review-form');
 addReviewForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    //get data
     let inputClientID = document.getElementById("input-clientID").value;
     let inputBuildingID = document.getElementById("input-buildingID").value;
     let inputRating = document.getElementById("input-rating").value;
     let inputComment = document.getElementById("input-comment").value;
 
+    //package data  
     let data = {
         clientID: inputClientID,
         buildingID: inputBuildingID,
         rating: inputRating,
         comment: inputComment
     };
-
+    //clear input fields
     if (inputClientID === '' || inputBuildingID === '' || inputRating === '' || inputComment === '') {
         alert("Please fill out all fields.");
         return; // Prevent form submission if any field is empty
     }
-
+    //make sure ratings are between 0 and 5
     if(inputRating < 0 || inputRating > 5){
         alert("Rating must be between 0-5")
         return;

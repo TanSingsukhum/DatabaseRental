@@ -3,6 +3,7 @@ let addClientForm = document.getElementById('add-client-form');
 addClientForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    //get data
     let inputBuildingID = document.getElementById("input-buildingID").value;
     let inputPhoneNumber = document.getElementById("input-phoneNumber").value;
     let inputName = document.getElementById("input-name").value;
@@ -12,6 +13,7 @@ addClientForm.addEventListener("submit", function (e) {
     let inputAddress = document.getElementById("input-address").value;
     let inputZipcode = document.getElementById("input-zipcode").value;
     
+    //package data
     let data = {
         buildingID: inputBuildingID,
         phoneNumber: inputPhoneNumber,

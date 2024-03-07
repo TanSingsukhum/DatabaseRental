@@ -1,4 +1,5 @@
 function deleteBuilding(buildingID){
+    //AJAX call
     var link = '/delete-building/';
     link += buildingID
     $.ajax({
@@ -11,7 +12,7 @@ function deleteBuilding(buildingID){
     });
 };
 
-
+//Delete the row
 function deleteRow(buildingID){
     var table = document.getElementById("buildings-table");
     for (var i=0, row; row=table.rows[i]; i++) {

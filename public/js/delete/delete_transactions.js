@@ -1,4 +1,5 @@
 function deleteTransaction(transactionID){
+    //Ajax call
     var link = '/delete-transaction/';
     link += transactionID
     $.ajax({
@@ -11,7 +12,7 @@ function deleteTransaction(transactionID){
     });
 };
 
-
+//Delete Row
 function deleteRow(transactionID){
     var table = document.getElementById("transactions-table");
     for (var i=0, row; row=table.rows[i]; i++) {

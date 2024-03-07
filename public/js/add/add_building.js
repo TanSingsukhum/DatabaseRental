@@ -3,6 +3,7 @@ let addClientBuilding = document.getElementById('add-building-form')
 addClientBuilding.addEventListener("submit", function(e){
     e.preventDefault();
 
+    //get data
     let inputHostID = document.getElementById("input-hostID").value;
     let inputBedroom = document.getElementById("input-bedroom").value;
     let inputBathroom = document.getElementById("input-bathroom").value;
@@ -13,6 +14,7 @@ addClientBuilding.addEventListener("submit", function(e){
     let inputAddress = document.getElementById("input-address").value;
     let inputZipcode = document.getElementById("input-zipcode").value;
 
+    //package data
     let data = {
         hostID: inputHostID,
         bedroomNumber: inputBedroom,
@@ -84,6 +86,7 @@ addRowToTable = (data) => {
         zipcode: inputZipcode 
     */
 
+    //insert data
     let bedroomCell = document.createElement("TD");
     bedroomCell.textContent = newRow.bedroomNumber
     row.appendChild(bedroomCell)

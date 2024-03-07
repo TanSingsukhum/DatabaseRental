@@ -3,11 +3,13 @@ let addRentalHistoryForm = document.getElementById('add-rentalHistory-form');
 addRentalHistoryForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    //Get data
     let inputClientID = document.getElementById("input-clientID").value;
     let inputBuildingID = document.getElementById("input-buildingID").value;
     let inputLeaseStart = document.getElementById("input-leaseStart").value;
     let inputLeaseEnd = document.getElementById("input-leaseEnd").value;
 
+    //package data
     let data = {
         clientID: inputClientID,
         buildingID: inputBuildingID,

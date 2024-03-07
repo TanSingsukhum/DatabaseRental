@@ -1,4 +1,5 @@
 function deleteRentalHistory(rentalID){
+    //AJAX call
     var link = '/delete-rentalHistory/';
     link += rentalID
     $.ajax({
@@ -11,7 +12,7 @@ function deleteRentalHistory(rentalID){
     });
 };
 
-
+//Delete row
 function deleteRow(rentalID){
     var table = document.getElementById("rentalHistory-table");
     for (var i=0, row; row=table.rows[i]; i++) {

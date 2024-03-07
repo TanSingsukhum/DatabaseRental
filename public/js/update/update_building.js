@@ -7,6 +7,7 @@ function updateBuildingRent() {
         return; // Prevent form submission if any field is empty
     }
 
+    //AJAX PUT statement
     var link = '/update-building/' + buildingId;
     $.ajax({
         url: link,

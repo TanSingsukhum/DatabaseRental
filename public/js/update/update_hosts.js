@@ -7,6 +7,7 @@ function updateBuildingsOwned() {
         return; // Prevent form submission if any field is empty
     }
 
+    //AJAX PUT statement
     $.ajax({
         url: '/update-hosts/' + encodeURIComponent(hostID),
         type: 'PUT',

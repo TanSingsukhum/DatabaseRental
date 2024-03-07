@@ -1,4 +1,5 @@
 function deleteClients(clientID){
+    //Ajax call
     var link = '/delete-clients/';
     link += clientID
     $.ajax({
@@ -11,7 +12,7 @@ function deleteClients(clientID){
     });
 };
 
-
+//Delete Row
 function deleteRow(clientID){
     var table = document.getElementById("client-table");
     for (var i=0, row; row=table.rows[i]; i++) {

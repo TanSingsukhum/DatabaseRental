@@ -7,6 +7,7 @@ function updateClientPhoneNumber() {
         return; // Prevent form submission if any field is empty
     }
 
+    //AJAX PUT statement
     $.ajax({
         url: '/update-client/' + encodeURIComponent(clientName),
         type: 'PUT',

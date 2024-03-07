@@ -24,6 +24,8 @@ function updateReview() {
         return;
     
     }
+
+    //AJAX PUT statement
     $.ajax({
         url: '/update-review/' + encodeURIComponent(reviewId),
         type: 'PUT',

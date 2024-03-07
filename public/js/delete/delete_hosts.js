@@ -1,4 +1,5 @@
 function deleteHosts(hostID){
+    //Ajax call
     var link = '/delete-hosts/';
     link += hostID
     $.ajax({
@@ -11,7 +12,7 @@ function deleteHosts(hostID){
     });
 };
 
-
+//delete row
 function deleteRow(hostID){
     var table = document.getElementById("hosts-table");
     for (var i=0, row; row=table.rows[i]; i++) {

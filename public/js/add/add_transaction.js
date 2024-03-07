@@ -3,6 +3,7 @@ let addTransactionForm = document.getElementById('add-transaction-form');
 addTransactionForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    //get data
     let inputRentalID = document.getElementById("input-rentalID").value;
     let inputPaymentMethod = document.getElementById("input-paymentMethod").value;
     let inputPaymentAmount = document.getElementById("input-paymentAmount").value;
@@ -14,6 +15,7 @@ addTransactionForm.addEventListener("submit", function (e) {
         return; // Prevent form submission if any field is empty
     }
     
+    //package data
     let data = {
         rentalID: inputRentalID,
         paymentMethod: inputPaymentMethod,

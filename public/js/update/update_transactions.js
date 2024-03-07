@@ -7,6 +7,7 @@ function updatePaymentAmount() {
         return; // Prevent form submission if any field is empty
     }
 
+    //AJAX PUT statement
     $.ajax({
         url: '/update-transaction/' + encodeURIComponent(transactionId),
         type: 'PUT',

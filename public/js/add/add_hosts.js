@@ -3,11 +3,13 @@ let addHostForm = document.getElementById('add-hosts-form');
 addHostForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
+    //get data
     let inputName = document.getElementById("input-hostName").value;
     let inputEmail = document.getElementById("input-email").value;
     let inputPhoneNumber = document.getElementById("input-phoneNumber").value;
     let inputNumberBuildings = document.getElementById("input-buildingsOwned").value;
 
+    //package data
     let data = {
         hostName: inputName,
         hostEmail: inputEmail,
@@ -15,6 +17,7 @@ addHostForm.addEventListener("submit", function (e) {
         numberBuildingsOwned: inputNumberBuildings
     };
 
+    //make sure input fields full
     if (inputName === '' || inputEmail === '' || inputPhoneNumber === '' || inputNumberBuildings === '') {
         alert("Please fill out all fields.");
         return; 

@@ -1,4 +1,5 @@
 function deleteReviews(reviewID){
+    //AJAX Call
     var link = '/delete-reviews/';
     link += reviewID
     $.ajax({
@@ -11,7 +12,7 @@ function deleteReviews(reviewID){
     });
 };
 
-
+//Delete row
 function deleteRow(reviewID){
     var table = document.getElementById("reviews-table");
     for (var i=0, row; row=table.rows[i]; i++) {
