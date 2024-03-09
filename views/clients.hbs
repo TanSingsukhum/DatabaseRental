@@ -87,7 +87,7 @@
         <select id="input-buildingID" name="input-buildingID">
             <option value="">Select a Client</option>
             {{#each clients}}
-            <option value="{{this.building_id}}">{{this.building_id}}</option>
+            <option value="{{this.building_id}}">{{this.building_id}} | {{this.client_name}}</option>
             {{/each}}
         </select>
 

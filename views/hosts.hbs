@@ -94,7 +94,7 @@
         <select id="hostIDSelect" name="hostIDSelect">
             <option value="">Select a Host</option>
             {{#each hosts}}
-            <option value="{{this.host_id}}">{{this.host_id}}</option>
+            <option value="{{this.host_id}}">{{this.host_id}} | {{this.host_name}}</option>
             {{/each}}
         </select>
         <input type="number" id="buildingsOwned" name="buildingsOwned" placeholder="New Buildings Owned">
