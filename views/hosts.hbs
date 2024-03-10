@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hosts</title>
+    <link rel="stylesheet" href="index.css">
     <style>
         /* Add any additional styles here */
         input {
@@ -33,12 +34,13 @@
     </style>
 </head>
 <body>
-    <h1>Hosts</h1>
+    <div class = "page-container">
+        <h1>Hosts</h1>
     <a href='/'><button>Home</button></a>
 
     <table id="hosts-table">
 
-        <form id="search-hosts" method="GET" action="/hosts"> 
+        <form id="search-hosts" method="GET" class = "search" action="/hosts"> 
             <label for="input-hostsName" >Search by Host Name: </label>
             <input type="text" name="host_name" id="input-hostsName" placeholder="enter hosts name">
 
@@ -70,9 +72,10 @@
             <!-- Add a single row for all input boxes and the Enter button -->
         </tbody>
     </table>
-
+<div class = "add-update-container">
+    <div class = "column">
     <h1>Add a Host</h1>
-    <form id="add-hosts-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
+    <form id="add-hosts-form" class = "add-update" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-hostName">Host Name: </label>
         <input type="text" name="input-hostName" id="input-hostName" placeholder="Enter Name">
 
@@ -87,10 +90,11 @@
 
         <input type="submit">
     </form>
-
+</div>
+<div class = "column">
 
     <h1>Update Number of Buildings owned</h1>
-    <form id="update-host-form" onsubmit="updateBuildingsOwned(); return false;">
+    <form id="update-host-form" class = "add-update" onsubmit="updateBuildingsOwned(); return false;">
         <select id="hostIDSelect" name="hostIDSelect">
             <option value="">Select a Host</option>
             {{#each hosts}}
@@ -100,6 +104,11 @@
         <input type="number" id="buildingsOwned" name="buildingsOwned" placeholder="New Buildings Owned">
         <button type="submit">Update Buildings Owned</button>
     </form>
+        
+    </div>
+</div>
+</div>
+    
 
     <script src="/js/add/add_hosts.js"> </script>
     <script src="/js/delete/delete_hosts.js"></script>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rental History</title>
+    <link rel="stylesheet" href="index.css">
     <style>
         /* Add any additional styles here */
         input {
@@ -33,10 +34,11 @@
     </style>
 </head>
 <body>
+    <div class = "page-container">
     <h1>Rental History</h1>
     <a href='/'><button>Home</button></a>
 
-        <form id="search-rental" method="GET" action="/rental_histories"> 
+        <form id="search-rental" method="GET" class = "search" action="/rental_histories"> 
             <label for="input-hostsName" >Search by Host Name: </label>
             <input type="text" name="rental_id" id="input-rental" placeholder="enter a rental ID">
 
@@ -72,9 +74,10 @@
             <!-- Add a single row for all input boxes and the Enter button -->
         </tbody>
     </table>
-    
+    <div class = "add-update-container">
+    <div class = "column">
     <h1>Add Rental History</h1>
-    <form id="add-rentalHistory-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
+    <form id="add-rentalHistory-form" class = "add-update" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-clientID">Client ID: </label>
         <select id="input-clientID" name="input-clientID">
             <option value="">Select a Client ID</option>
@@ -99,9 +102,10 @@
 
         <input type="submit">
     </form>
-
+    </div>
+    <div class = "column">
     <h1>Update Lease End Date</h1>
-    <form id="update-rental-history-form" onsubmit="updateLeaseEndDate(); return false;">
+    <form id="update-rental-history-form" class = "add-update" onsubmit="updateLeaseEndDate(); return false;">
         <select id="rentalIdSelect" name="rentalIdSelect">
             <option value="">Select a Rental ID</option>
             {{#each rental_histories}}
@@ -111,7 +115,9 @@
         <input type="date" id="newLeaseEndDate" name="newLeaseEndDate" placeholder="Select Lease End Date">
         <button type="submit">Update Lease End Date</button>
     </form>
-
+    </div>
+    </div>
+    </div>
 
     <script src="/js/add/add_rentalHistory.js"></script>
     <script src="/js/delete/delete_rentalHistory.js"></script>

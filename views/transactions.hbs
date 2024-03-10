@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transactions</title>
+    <link rel="stylesheet" href="index.css">
     <style>
         /* Add any additional styles here */
         input {
@@ -33,10 +34,11 @@
     </style>
 </head>
 <body>
+    <div class = "page-container">
     <h1>Transactions</h1>
     <a href='/'><button>Home</button></a>
 
-        <form id="search-transaction" method="GET" action="/transactions"> 
+        <form id="search-transaction" method="GET" class = "search" action="/transactions"> 
             <label for="search-transaction" >Search by rental ID: </label>
             <input type="text" name="rental_id" id="search-transaction" placeholder="enter a rental ID">
 
@@ -69,10 +71,11 @@
  
         </tbody>
     </table>
-
+<div class = "add-update-container">
+    <div class = "column">
 
     <h1>Add a Transaction</h1>
-    <form id="add-transaction-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
+    <form id="add-transaction-form" action="javascript:void(0);" class = "add-update" onsubmit="window.location.href = window.location.href;">
         <label for="input-rentalID">Enter a Rental ID: </label>
         <select id="input-rentalID" name="input-rentalID">
             <option value="">Select a Rental ID</option>
@@ -93,9 +96,10 @@
 
         <input type="submit" action="/transactions">
     </form>
-
+</div>
+<div class = "column">
     <h1>Update Payment Amount</h1>
-    <form id="update-transaction-form" onsubmit="updatePaymentAmount(); return false;">
+    <form id="update-transaction-form" class = "add-update" onsubmit="updatePaymentAmount(); return false;">
         <select id="transactionIdSelect" name="transactionIdSelect">
             <option value="">Select a Transaction ID</option>
             {{#each transactions}}
@@ -105,7 +109,9 @@
         <input type="number" id="paymentAmount" name="paymentAmount" placeholder="New Payment Amount">
         <button type="submit">Update Payment Amount</button>
     </form>
-
+    </div>
+    </div>
+    </div>  
     <script src="/js/add/add_transaction.js"></script>
     <script src="/js/delete/delete_transactions.js"></script>
     <script src="/js/update/update_transactions.js"></script>

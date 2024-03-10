@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
     <style>
         /* Add any additional styles here */
         input {
@@ -33,10 +34,11 @@
     </style>
 </head>
 <body>
+    <div class = "page-container">
     <h1>Buildings</h1>
     <a href='/'><button>Home</button></a>
 
-        <form id="search-buildings" method="GET" action="/buildings"> 
+        <form id="search-buildings" method="GET" class = "search" action="/buildings"> 
             <label for="input-buildingID" >Search by Building Name: </label>
             <input type="text" name="building_id" id="input-buildingID" placeholder="Enter building ID">
 
@@ -79,8 +81,10 @@
         </tbody>
     </table>
 
+<div class = "add-update-container">
+    <div class = "column">
     <h1>Add a Building</h1>
-    <form id="add-building-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
+    <form id="add-building-form" class = "add-update" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
         <label for="input-hostID">Host ID: </label>
         <select id="input-hostID" name="input-hostID">
             <option value="">Select a host ID</option>
@@ -115,9 +119,10 @@
 
         <input type="submit">
     </form>
-
+    </div>
+    <div class = "column">
     <h1>Update a Building's Rental Amount</h1>
-    <form id="update-building-form" onsubmit="updateBuildingRent(); return false;">
+    <form id="update-building-form" class = "add-update" onsubmit="updateBuildingRent(); return false;">
         <select id="building-select" name="building-select">
             <option value="">Select a Building</option>
             {{#each buildings}}
@@ -127,6 +132,9 @@
         <input type="number" id="new-rent" name="new-rent" placeholder="Enter New Rent Amount">
         <input type="submit" value="Update Rent">
     </form>
+    </div>
+    </div>  
+    </div>
 
     <script src="/js/add/add_building.js"> </script>
     <script src="/js/delete/delete_building.js"></script>

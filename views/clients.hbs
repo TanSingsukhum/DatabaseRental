@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clients</title>
+    <link rel="stylesheet" href="index.css">
     <style>
         /* Add any additional styles here */
         input {
@@ -33,11 +34,12 @@
     </style>
 </head>
 <body>
-    <h1>Clients</h1>
+    <div class = "page-container">
+        <h1>Clients</h1>
     <a href='/'><button>Home</button></a>
 
     <table id="client-table">
-        <form id="search-clients" method="GET" action="/clients"> 
+        <form id="search-clients" class = "search" method="GET" action="/clients"> 
             <label for="input-clientName" >Search by Host Name: </label>
             <input type="text" name="client_name" id="input-clientName" placeholder="Enter client name">
 
@@ -80,9 +82,11 @@
         </tbody>
     </table>
 
+    <div class = "add-update-container">
 
+    <div class = "column">
     <h1>Add a Client</h1>
-    <form id="add-client-form" action="javascript:void(0);" onsubmit="window.location.href = window.location.href;">
+    <form id="add-client-form" action="javascript:void(0);" class = "add-update" onsubmit="window.location.href = window.location.href;">
         <label for="input-buildingID">Building ID: </label>
         <select id="input-buildingID" name="input-buildingID">
             <option value="">Select a Client</option>
@@ -116,9 +120,10 @@
     
         <input type="submit">
     </form>
-
+    </div>
+    <div class = "column">
     <h1>Update Client Phone Number</h1>
-    <form id="update-client-form" onsubmit="updateClientPhoneNumber(); return false;">
+    <form id="update-client-form" class = "add-update" onsubmit="updateClientPhoneNumber(); return false;">
         <select id="clientNameSelect" name="clientNameSelect">
             <option value="">Select a Client</option>
             {{#each clients}}
@@ -128,6 +133,9 @@
         <input type="text" id="clientPhoneNumber" name="clientPhoneNumber" placeholder="New Phone Number">
         <button type="submit">Update Phone Number</button>
     </form>
+    </div>
+    </div>
+    </div>  
 
 
 
